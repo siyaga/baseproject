@@ -40,6 +40,8 @@ exports.getUsers = async (req, res) => {
 // Get a single user by ID
 exports.getUserById = async (req, res) => {
   try {
+    console.log("test");
+    console.log(req.params.id);
     const user = await userModel.getUserById(req.params.id);
 
     // Check if user is found directly

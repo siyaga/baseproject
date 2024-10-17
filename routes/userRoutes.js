@@ -10,7 +10,7 @@ const validateUserId = [
   param("id")
     .notEmpty()
     .withMessage("User ID is required")
-    .isMongoId()
+    .isUUID() // Use isUUID for PostgreSQL UUID validation
     .withMessage("user not found"), // Check if it's a valid MongoDB ObjectId
   // This middleware runs after the above validations
   (req, res, next) => {
