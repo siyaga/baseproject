@@ -5,7 +5,7 @@ const formatDate = require("./utils/formatdata");
 const authenticateJWT = require("./middleware/authMiddleware");
 
 const app = express();
-const port = 3000;
+const port = 8080;
 
 app.use(express.json());
 // Middleware to log API requests
