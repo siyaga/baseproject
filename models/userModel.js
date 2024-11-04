@@ -17,6 +17,8 @@ exports.getAllUsers = async ({ limit, offset, search }) => {
   const count = await prisma.user.count({ where: whereClause });
   const rows = await prisma.user.findMany({
     where: whereClause,
+    take: limit, // limit the number of results
+    skip: offset, // skip the given number of results
     select: {
       // Use select here as well
       id: true,
@@ -32,7 +34,6 @@ exports.getAllUsers = async ({ limit, offset, search }) => {
     createdAt: formatDate(user.createdAt),
     updatedAt: formatDate(user.updatedAt),
   }));
-  const paginatedRows = rows.slice(offset, offset + limit);
 
   return { count, rows: formattedRows };
 };
